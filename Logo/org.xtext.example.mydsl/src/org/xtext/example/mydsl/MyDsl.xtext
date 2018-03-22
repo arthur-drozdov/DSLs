@@ -1,0 +1,19 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+
+PROGRAM:
+	commands+=CMD*
+;
+
+CMD:
+	PAPER | TURTLE | PENSTATE | PENCOLOUR | MOVE | RIGHT | LEFT
+;
+
+PAPER: 'PAPER' sizeX=INT sizeY=INT paperColour=STRING;
+TURTLE: 'TURTLE' startPosX=INT startPosY=INT;
+PENSTATE: 'PENSTATE' penState=('UP'|'DOWN');
+PENCOLOUR: 'PENCOLOUR' colour=STRING;
+MOVE: 'MOVE' amount=INT;
+RIGHT: 'RIGHT'  amount=INT;
+LEFT: 'LEFT' amount=INT;
